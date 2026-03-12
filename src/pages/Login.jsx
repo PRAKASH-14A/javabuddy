@@ -22,31 +22,40 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = "ekwokd30i93rk20o121enmmfoe3";
-    localStorage.setItem("jwt_token", token);
+
 
     try {
-      const response = await axios.get("http://localhost:3000/users", formData);
-
-      toast.success("Login successful!");
-
-      // setTimeout(() => {
-        navigate("/dashboard");
-      // }, 1500);
-    } catch (error) {
-      if (error.response) {
-        toast.error("Invalid email or password");
-      } else {
-        toast.error("Server error. Please try again.");
+      const {data} = await axios.get("http://localhost:3000/users", formData);
+      const currentuser = await data.find((ele)=> ele.email === formData.email)
+      console.log(currentuser);
+      
+      if(!currentuser) {
+        toast.error("Invalid Email");
+        return;
       }
+      else if(currentuser.password !== formData.password) {
+        toast.error("Invalid Password");
+        return;
+      }
+
+      const token = `abcde.${currentuser.id}`;
+      localStorage.setItem("jwt_token", token);
+
+    } catch (error) {
+      console.log(error.message);
+      
     }
+
+
+    toast.success("Login successful!");
+    navigate("/dashboard");
   };
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row font-sans bg-gradient-to-tr from-blue-50 to-blue-100">
       <ToastContainer position="top-right" autoClose={2000} />
 
-      {/* Left Panel */}
+
       <div className="lg:w-1/2 flex items-center justify-center py-20 px-10 bg-blue-600 text-white text-center">
         <div>
           <h2 className="text-5xl font-extrabold mb-4 animate-pulse">
@@ -59,12 +68,12 @@ const Login = () => {
             to="/register"
             className="inline-block px-8 py-3 border-2 border-white rounded-full font-semibold hover:bg-white hover:text-blue-700 transition-all duration-300"
           >
-            SIGN UP
+            REGISTER
           </Link>
         </div>
       </div>
 
-      {/* Right Panel */}
+
       <div className="lg:w-1/2 flex items-center justify-center py-16 px-6">
         <motion.div
           initial={{ opacity: 0, y: 60 }}
@@ -73,14 +82,14 @@ const Login = () => {
           className="w-full max-w-md bg-white rounded-xl shadow-xl p-8"
         >
           <h2 className="text-3xl font-bold text-center text-blue-800 mb-2">
-            Sign In
+            LOGIN
           </h2>
           <p className="text-center text-gray-500 mb-6">
             Use your email and password
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-5">
-            {/* Email */}
+
             <div>
               <input
                 type="email"
@@ -94,7 +103,7 @@ const Login = () => {
               />
             </div>
 
-            {/* Password */}
+
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
@@ -113,12 +122,12 @@ const Login = () => {
               </span>
             </div>
 
-            {/* Submit Button */}
+
             <button
               type="submit"
               className="w-full bg-gradient-to-r from-blue-600 to-indigo-500 text-white py-3 rounded-full font-semibold hover:from-blue-700 hover:to-indigo-600 transition duration-300 shadow-md"
             >
-              SIGN IN
+              LOGIN
             </button>
           </form>
         </motion.div>

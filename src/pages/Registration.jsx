@@ -8,22 +8,19 @@ import { Eye, EyeOff } from 'lucide-react';
 const Registration = () => {
   const [formData, setFormData] = useState({
     username: "",
-    nickname: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
 
-  const [showPassword, setShowPassword] = useState({
-    password: false,
-    confirmPassword: false,
-  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (e) => {
@@ -37,40 +34,36 @@ const Registration = () => {
     try {
       const { confirmPassword, ...payload } = formData;
 
-      const response = await axios.post("http://localhost:3000/users", payload);
+      const {data} = await axios.post("http://localhost:3000/users", payload);
 
-      console.log(response.data);
+      console.log(data);
 
       toast.success("SignUp successful!");
-      navigate("/user/signin");
+      navigate("/login");
     } catch (error) {
-      console.error(error);
+      // console.error(error);
+      toast.error("Registration Failed!!!")
 
-      if (error.response) {
-        toast.error("Signup failed");
-      } else {
-        toast.error("Server error");
-      }
     }
   };
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row font-sans bg-gradient-to-tr from-blue-50 to-blue-100">
-      {/* Left Panel */}
+
       <div className="lg:w-1/2 flex items-center justify-center bg-blue-700 text-white py-20 px-10 text-center">
         <div>
           <h2 className="text-5xl font-extrabold mb-4 animate-pulse">
             Welcome Back
-            {formData.nickname ? `, ${formData.nickname}!` : " User!"}
+
           </h2>
           <p className="text-lg mb-6">
             To keep connected with us, please login with your personal info.
           </p>
           <Link
-            to="/user/signin"
+            to="/login"
             className="inline-block px-8 py-3 border-2 border-white rounded-full font-semibold hover:bg-white hover:text-blue-700 transition-all duration-300"
           >
-            SIGN IN
+            LOGIN
           </Link>
         </div>
       </div>
@@ -92,7 +85,7 @@ const Registration = () => {
           </p>
 
           <form className="space-y-5" onSubmit={handleSubmit}>
-            {/* Username */}
+
             <input
               type="text"
               name="username"
@@ -103,17 +96,7 @@ const Registration = () => {
               required
             />
 
-            {/* Nickname */}
-            <input
-              type="text"
-              name="nickname"
-              value={formData.nickname}
-              onChange={handleChange}
-              placeholder="Nickname"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
-            />
 
-            {/* Email */}
             <input
               type="email"
               name="email"
@@ -124,10 +107,10 @@ const Registration = () => {
               required
             />
 
-            {/* Password */}
+
             <div className="relative">
               <input
-                type={showPassword.password ? "text" : "password"}
+                type={showPassword ? "text" : "password"}
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
@@ -136,26 +119,17 @@ const Registration = () => {
                 required
               />
               <span
-                onClick={() =>
-                  setShowPassword((prev) => ({
-                    ...prev,
-                    password: !prev.password,
-                  }))
-                }
+                onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-600 hover:text-blue-500"
               >
-                {showPassword.password ? (
-                  <EyeOff size={20} />
-                ) : (
-                  <Eye size={20} />
-                )}
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </span>
             </div>
 
-            {/* Confirm Password */}
+
             <div className="relative">
               <input
-                type={showPassword.confirmPassword ? "text" : "password"}
+                type={showConfirmPassword ? "text" : "password"}
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 onChange={handleChange}
@@ -164,28 +138,19 @@ const Registration = () => {
                 required
               />
               <span
-                onClick={() =>
-                  setShowPassword((prev) => ({
-                    ...prev,
-                    confirmPassword: !prev.confirmPassword,
-                  }))
-                }
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-600 hover:text-blue-500"
               >
-                {showPassword.confirmPassword ? (
-                  <EyeOff size={20} />
-                ) : (
-                  <Eye size={20} />
-                )}
+                {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </span>
             </div>
 
-            {/* Submit */}
+
             <button
               type="submit"
               className="w-full bg-gradient-to-r from-blue-600 to-indigo-500 text-white py-3 rounded-full font-semibold hover:from-blue-700 hover:to-indigo-600 transition duration-300 shadow-md"
             >
-              SIGN UP
+              REGISTER
             </button>
           </form>
         </motion.div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { Typewriter } from 'react-simple-typewriter';
-import Footer from '../footer/Footer';
+import Footer from '../components/footer/Footer';
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);

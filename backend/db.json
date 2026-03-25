@@ -201,5 +201,42 @@
       ]
     }
   ],
+  "DataType": [
+    {
+      "id": 1,
+      "icon": "Database",
+      "title": "Definition of Data Types",
+      "points": [
+        "Every data has some type, and that type is known as a Data Type.",
+        "Data type defines which type of data a variable can hold or store in memory."
+      ]
+    },
+    {
+      "id": 2,
+      "icon": "Layers",
+      "title": "Types of Data Types",
+      "points": ["1. Primitive Data Type", "2. Non-Primitive Data Type"]
+    },
+    {
+      "id": 3,
+      "icon": "Database",
+      "title": "Primitive Data Types",
+      "description": "These are the data types that will store only values To use these primitive data types, we have to follow certain rules",
+      "points": [
+        "If we want to use a long value in our program, we will use L/l at the end of the value as a suffix.",
+        "To differentiate in between float and double value, we will use F/f for float and D/d for double value as a suffix.",
+        "Using D/d to denote double value is not mandatory, which means if we are not giving any suffix to a decimal value then that value will be considered as a double value. ",
+        "In order to represent a char value, we will use single quotes for it, but it can contain only one character.",
+        "For boolean values, we will always go for lower case; otherwise, we will get a compilation error."
+      ]
+    },
+    {
+      "id": 4,
+      "icon": "Layers",
+      "title": "Non-Primitive Data Types",
+      "description": "These are the data types that will store the objects only.Non-primitive data types (also called reference types) are types that refer to objects and do not store the actual data directly. They are created by the programmer (except for built-in ones like String, Array, etc.).Unlike primitive types (like int, char, etc.), non-primitive types store memory addresses (references) of objects.",
+      "points": []
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

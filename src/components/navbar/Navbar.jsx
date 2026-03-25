@@ -32,6 +32,7 @@ const Navbar = () => {
     },
   ];
 
+  const token=localStorage.getItem("jwt_token")
   return (
     <div className="w-full bg-gradient-to-r from-emerald-500 to-indigo-700 shadow-lg">
       <div className="h-[60px] flex justify-between items-center px-6 md:px-10">

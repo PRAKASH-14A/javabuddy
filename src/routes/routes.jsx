@@ -9,6 +9,7 @@ import PrivateRouting from '../privaterouting/PrivateRouting';
 import About from '../pages/About';
 import Roadmap from '../pages/Roadmap';
 import Contact from '../pages/Contact';
+import Array from '../dashboard/dashboardPages/Array/Array';
 
 const routes = createBrowserRouter([
   {
@@ -40,10 +41,8 @@ const routes = createBrowserRouter([
         </PrivateRouting>,
         children: [
           {
-            path: "/dashboard",
-            element: <PrivateRouting>
-              <Dashboard />
-            </PrivateRouting>
+            path: "/dashboard/arrays",
+            element:<Array/>
           }
         ]
       }

@@ -13,5 +13,193 @@
       "password": "123"
     }
   ],
+  "intro": [
+    {
+      "id": 1,
+      "icon": "Java",
+      "title": "What is Java?",
+      "description": "Java is a class-based, object-oriented programming language designed to have minimal implementation dependencies. It’s widely used across enterprise, mobile application developement, and web platforms.",
+      "points": [
+        "Platform independent via JVM.",
+        "Object-Oriented and secure.",
+        "Multithreading and garbage collection support.",
+        "Popular in enterprise, Android developement, and web development."
+      ]
+    },
+    {
+      "id": 2,
+      "icon": "Landmark",
+      "title": "JDK vs JRE vs JVM",
+
+      "points": [
+        "JDK: The Java Development Kit (JDK) is a software development kit that provides a set of tools and libraries for developing Java applications. It includes the Java Runtime Environment (JRE), which is necessary for running Java programs, as well as development tools such as compilers and debuggers. The JDK is essential for developers who want to write, compile, and run Java code.",
+        "JRE:The Java Runtime Environment (JRE) is a package that provides the libraries and JVM required to run Java applications. It does not include development tools, making it suitable for users who only need to run Java programs without developing them. The JRE is a subset of the JDK and is included in the JDK installation.",
+        "JVM: The Java Virtual Machine (JVM) is a crucial component of the JRE that provides the runtime environment for Java programs. It is responsible for executing Java bytecode on any platform that supports JVM, making Java a “write once, run anywhere” language. The JVM is included in the JRE and is not installed separately."
+      ]
+    },
+    {
+      "id": 3,
+      "icon": "Wrench",
+      "title": "Features of Java",
+      "points": [
+        "Simple : Easy to learn ,with syntax similar to c++ but without complex features.",
+        "Object-Oriented : Everything is treated as object",
+        "Platform-independent : Java code rund on any machine with a java virtual machile",
+        "Robust : Strong memory management, exception handling,and type checking",
+        "Multithreaded : Supports multiple programming",
+        "Architectural Neural : No dependency on processor architecture",
+        "Portable : Java bytecode can be transferred and run on any platform",
+        "High Performance : Just-In-Time(JIT) compiler improves performance.",
+        "Secure : Provides a secure environment with features like bytecode verification",
+        "sandboxing : Sandboxing is a security mechanism in Java that restricts the execution of untrusted code in a controlled environment",
+        "Distributed : Designed for nuilding distributed application",
+        "Dynamic : Supports dynamic linking of classes and methods . "
+      ]
+    },
+    {
+      "id": 4,
+      "icon": "ThumbsDown",
+      "title": "Disadvantages of Java",
+      "points": [
+        "Slower Performance than Native Languages(like c or c++)",
+        "Memory consumption (Automatic garbage Collection and heavy JVM and not ideal for systems like low RAM) ",
+        "Verbose Syntax (Java code can be very long-winded compared to modern languaes like python and kotlin .)",
+        "Poor GUI Support (Java's GUI liberaries (like Swing and AWT)(Outdated) (Incosstent in look across platforms) JavaFX is better ,but still not widely used for modern UIs.",
+        "No Control Over Low-Level Aspects (Java abstracts away memory management and hardware access)(not suitable for system level programming like device drivers or OS kernals)",
+        "Security Issues in Order Java Versions (Java Applets and Outdates plugins were once majore security risks through now deprecated,they left a legacy of trust issues .",
+        "Hight Startup Time (Java application take longer to start compared to native or scripting languages , this is due to jvm startup and class loading ) ",
+        "Backward Compatibility Bloat (Java is very backward compatible , But this leads to bloat and legacy code that must be supported in JVM)"
+      ]
+    }
+  ],
+  "install": [
+    {
+      "id": 1,
+      "icon": "Download",
+      "title": "Download and Install JDK",
+      "points": [
+        "Go to the official Oracle website or OpenJDK provider.",
+        "Download the latest version of JDK suitable for your OS.",
+        "Run the installer and follow installation steps.",
+        "Verify installation using: java -version in terminal."
+      ]
+    },
+    {
+      "id": 2,
+      "icon": "Settings",
+      "title": "Setting Up Environment Variables",
+      "points": [
+        "Open System Properties → Advanced → Environment Variables.",
+        "Create a new system variable named JAVA_HOME.",
+        "Set JAVA_HOME to your JDK installation path.",
+        "Add %JAVA_HOME%\\bin to the Path variable.",
+        "Verify using: javac -version in terminal."
+      ]
+    },
+    {
+      "id": 3,
+      "icon": "PlayCircle",
+      "title": "Writing and Running First Java Program",
+      "points": [
+        "Create a file named HelloWorld.java.",
+        "Write a simple main method.",
+        "Compile using: javac HelloWorld.java.",
+        "Run using: java HelloWorld."
+      ]
+    },
+    {
+      "id": 4,
+      "icon": "Code",
+      "title": "Using IDEs (Eclipse, IntelliJ IDEA, VS Code)",
+      "points": [
+        "Download and install your preferred IDE.",
+        "Create a new Java project.",
+        "Write and run Java programs easily with built-in tools.",
+        "Use debugger and extensions for better development."
+      ]
+    }
+  ],
+  "identifier": [
+    {
+      "id": 1,
+      "icon": "Type",
+      "title": "Definition of Identifiers",
+      "description": "An identifier is the name used to identify classes, methods, variables, labels, and other user-defined elements in Java. In simple terms, identifiers are the names you give to elements in your program.",
+      "points": []
+    },
+    {
+      "id": 2,
+      "icon": "BookOpen",
+      "title": "Rules for Naming Identifiers",
+      "description": "Java has strict rules for naming identifiers. If you break any rule, the compiler will throw an error.",
+      "points": [
+        " ✔️ Can contain letters (A-Z, a-z), digits (0-9), underscores (_), and dollar signs ($).",
+        " ❌ Cannot start with a digit.",
+        " ❌ Cannot use Java reserved keywords (e.g., int, class, public).",
+        " ✔️ Can be of any length.",
+        " ✔️ Java is case-sensitive (name and Name are different).",
+        " ✔️ Unicode characters are allowed (avoid unless necessary).",
+        " ❌ No spaces allowed in identifiers."
+      ]
+    },
+    {
+      "id": 3,
+      "icon": "CheckCircle",
+      "title": "Valid Identifier Examples",
+      "points": [],
+      "code": "int age;\nString studentName;\ndouble _salary;\nfloat $bonus;\nboolean isValid;"
+    },
+    {
+      "id": 4,
+      "icon": "XCircle",
+      "title": "Invalid Identifier Examples",
+      "points": [],
+      "code": "int 1stNumber; // Starts with a digit\nString full name; // Contains space\nfloat class; // 'class' is a reserved keyword"
+    },
+    {
+      "id": 5,
+      "icon": "BookOpen",
+      "title": "Java Naming Conventions",
+      "description": "Java developers follow standard naming conventions for readability and consistency.",
+      "table": [
+        {
+          "element": "Class",
+          "convention": "PascalCase",
+          "example": "StudentInfo",
+          "description": "First letter of each word capitalized"
+        },
+        {
+          "element": "Interface",
+          "convention": "PascalCase",
+          "example": "Runnable, Serializable",
+          "description": "Same as class naming"
+        },
+        {
+          "element": "Method",
+          "convention": "camelCase",
+          "example": "getStudentName()",
+          "description": "Starts lowercase, then CapitalWords"
+        },
+        {
+          "element": "Variable",
+          "convention": "camelCase",
+          "example": "totalMarks",
+          "description": "Same as method naming"
+        },
+        {
+          "element": "Constant",
+          "convention": "UPPER_SNAKE_CASE",
+          "example": "MAX_SPEED",
+          "description": "All caps with underscores"
+        },
+        {
+          "element": "Package",
+          "convention": "lowercase",
+          "example": "com.example.school",
+          "description": "Only lowercase with dots"
+        }
+      ]
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

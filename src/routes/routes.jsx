@@ -10,6 +10,9 @@ import About from '../pages/About';
 import Roadmap from '../pages/Roadmap';
 import Contact from '../pages/Contact';
 import Array from '../dashboard/dashboardPages/Array/Array';
+import Introduction from '../dashboard/dashboardPages/Introduction/Introduction';
+import Installations from '../dashboard/dashboardPages/Installtion/Installtion';
+import Identifier from '../dashboard/dashboardPages/Identifier/Identifier';
 
 const routes = createBrowserRouter([
   {
@@ -37,11 +40,23 @@ const routes = createBrowserRouter([
       {
         path: "/dashboard",
         element: <PrivateRouting>
-          <DashboardHome />
+          <Dashboard />
         </PrivateRouting>,
         children: [
           {
-            path: "/dashboard/arrays",
+            path:"introduction",
+            element:<Introduction/>
+          },
+          {
+            path:"installation",
+            element:<Installations/>
+          },
+          {
+            path:"identifier",
+            element:<Identifier/>
+          },
+          {
+            path: "arrays",
             element:<Array/>
           }
         ]

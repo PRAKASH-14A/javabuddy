@@ -94,9 +94,8 @@ const SidebarItem = memo(({ title, links, icon: Icon, isOpen, onClick }) => {
           )}
           <span className="text-sm font-semibold">{title}</span>
         </div>
-        {links.length > 0 && (
-          isOpen ? <ChevronDown size={16} className="text-white/80" /> : <ChevronRight size={16} className="text-white/80" />
-        )}
+        {links.length > 0 &&
+          (isOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />)}
       </div>
 
       <div
@@ -145,8 +144,9 @@ const Dashboard = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex h-screen bg-gray-50">
-      <aside className="w-80 bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-800 p-4 space-y-3 overflow-y-auto scrollbar-hide shadow-2xl relative">
+    <div className="flex min-h-screen overflow-hidden bg-gray-50">
+      
+      <aside className="w-80 h-screen overflow-y-auto bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-800 p-4 space-y-3 shadow-2xl relative">
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-purple-600/20 backdrop-blur-3xl"></div>
         <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white/5 to-transparent"></div>
 
@@ -179,8 +179,8 @@ const Dashboard = () => {
         </div>
       </aside>
 
-      <main className="flex-1 bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 p-8 overflow-y-auto scrollbar-hide">
-        <div className="max-w-6xl mx-auto">
+      <main className="flex-1 h-screen overflow-y-auto p-6 bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50">
+        <div className="max-w-6xl mx-auto w-full">
           <Outlet />
         </div>
       </main>

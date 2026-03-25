@@ -4,8 +4,11 @@ import Dashboard from './Dashboard'
 
 const DashboardHome = () => {
   return (
-    <div>
-      <Dashboard/>
+    <div className="h-screen flex flex-col overflow-hidden">
+      <Navbar />
+      <div className="flex-1 overflow-hidden">
+        <Outlet />
+      </div>
     </div>
   )
 }

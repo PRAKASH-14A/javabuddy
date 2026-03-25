@@ -23,10 +23,8 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      // no need to pass formData in GET
       const { data } = await axios.get("http://localhost:3000/users");
 
-      // no need for await here
       const currentUser = data.find(
         (user) => user.email === formData.email
       );
@@ -43,7 +41,7 @@ const Login = () => {
 
       const token = `abcde.${currentUser.id}`;
       localStorage.setItem("jwt_token", token);
-
+      window.dispatchEvent(new Event("authChanged"));
       toast.success("Login successful!");
       navigate("/dashboard");
     } catch (error) {

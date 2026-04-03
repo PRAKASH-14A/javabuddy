@@ -473,7 +473,7 @@ const ExceptionHandling = () => {
   const { header, sections } = exceptionClassData;
 
   return (
-    <div className="w-[95%] max-w-7xl mx-auto py-10">
+    <div className="w-[95%] max-w-7xl mx-auto py-8">
       <SectionHeader title={header.title} subtitle={header.subtitle} />
       <div className="flex flex-col gap-10">
         {sections.map((section) => (

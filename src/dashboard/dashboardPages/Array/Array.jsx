@@ -256,7 +256,7 @@ for(String fruit : fruits) {
 };
 
 const SectionHeader = ({ title, subtitle }) => (
-  <div className="text-center mb-12">
+  <div className="text-center mb-8">
     <h1 className="text-4xl md:text-5xl font-bold text-blue-700 dark:text-blue-300 mb-2">
       {title}
     </h1>
@@ -361,7 +361,7 @@ const Array = () => {
   const { header, sections } = arrayClassData;
 
   return (
-    <div className="w-[95%] max-w-7xl mx-auto py-10">
+    <div className="w-[95%] max-w-7xl mx-auto py-8">
       <SectionHeader title={header.title} subtitle={header.subtitle} />
       <div className="flex flex-col gap-10">
         {sections.map((section) => (

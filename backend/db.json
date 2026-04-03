@@ -133,13 +133,13 @@
       "title": "Rules for Naming Identifiers",
       "description": "Java has strict rules for naming identifiers. If you break any rule, the compiler will throw an error.",
       "points": [
-        " ✔️ Can contain letters (A-Z, a-z), digits (0-9), underscores (_), and dollar signs ($).",
-        " ❌ Cannot start with a digit.",
-        " ❌ Cannot use Java reserved keywords (e.g., int, class, public).",
-        " ✔️ Can be of any length.",
-        " ✔️ Java is case-sensitive (name and Name are different).",
-        " ✔️ Unicode characters are allowed (avoid unless necessary).",
-        " ❌ No spaces allowed in identifiers."
+        "✔️ Can contain letters (A-Z, a-z), digits (0-9), underscores (_), and dollar signs ($).",
+        "❌ Cannot start with a digit.",
+        "❌ Cannot use Java reserved keywords (e.g., int, class, public).",
+        "✔️ Can be of any length.",
+        "✔️ Java is case-sensitive (name and Name are different).",
+        "✔️ Unicode characters are allowed (avoid unless necessary).",
+        "❌ No spaces allowed in identifiers."
       ]
     },
     {
@@ -159,7 +159,7 @@
     {
       "id": 5,
       "icon": "BookOpen",
-      "title": "Java Naming Conventions",
+      "title": "Java Naming Conventions (CamelCase, PascalCase)",
       "description": "Java developers follow standard naming conventions for readability and consistency.",
       "table": [
         {
@@ -215,19 +215,20 @@
       "id": 2,
       "icon": "Layers",
       "title": "Types of Data Types",
-      "points": ["1. Primitive Data Type", "2. Non-Primitive Data Type"]
+      "points": ["1. Primitive Data Type", "2. Non-Primitive Data Type"],
+      "image": "datatype"
     },
     {
       "id": 3,
       "icon": "Database",
       "title": "Primitive Data Types",
-      "description": "These are the data types that will store only values To use these primitive data types, we have to follow certain rules",
+      "description": "These are the data types that will store only values. To use these primitive data types, we have to follow certain rules.",
       "points": [
         "If we want to use a long value in our program, we will use L/l at the end of the value as a suffix.",
         "To differentiate in between float and double value, we will use F/f for float and D/d for double value as a suffix.",
-        "Using D/d to denote double value is not mandatory, which means if we are not giving any suffix to a decimal value then that value will be considered as a double value. ",
-        "In order to represent a char value, we will use single quotes for it, but it can contain only one character.",
-        "For boolean values, we will always go for lower case; otherwise, we will get a compilation error."
+        "Using D/d is not mandatory; decimal values are double by default.",
+        "Char values use single quotes and contain only one character.",
+        "Boolean values must always be lowercase."
       ]
     },
     {
@@ -236,7 +237,392 @@
       "title": "Non-Primitive Data Types",
       "description": "These are the data types that will store the objects only.Non-primitive data types (also called reference types) are types that refer to objects and do not store the actual data directly. They are created by the programmer (except for built-in ones like String, Array, etc.).Unlike primitive types (like int, char, etc.), non-primitive types store memory addresses (references) of objects.",
       "points": []
+    },
+    {
+      "id": 5,
+      "icon": "Database",
+      "title": "Primitive Data Types in Java",
+      "table": [
+        {
+          "datatype": "byte",
+          "size": "1 byte",
+          "range": "-128 to 127",
+          "wrapper": "Byte",
+          "default": "0"
+        },
+        {
+          "datatype": "short",
+          "size": "2 bytes",
+          "range": "-32768 to 32767",
+          "wrapper": "Short",
+          "default": "0"
+        },
+        {
+          "datatype": "int",
+          "size": "4 bytes",
+          "range": "-2147483648 to 2147483647",
+          "wrapper": "Integer",
+          "default": "0"
+        },
+        {
+          "datatype": "long",
+          "size": "8 bytes",
+          "range": "-2^63 to 2^63-1",
+          "wrapper": "Long",
+          "default": "0"
+        },
+        {
+          "datatype": "float",
+          "size": "4 bytes",
+          "range": "-3.4e38 to 3.4e38",
+          "wrapper": "Float",
+          "default": "0.0"
+        },
+        {
+          "datatype": "double",
+          "size": "8 bytes",
+          "range": "-1.7e308 to 1.7e308",
+          "wrapper": "Double",
+          "default": "0.0"
+        },
+        {
+          "datatype": "boolean",
+          "size": "N/A",
+          "range": "true / false",
+          "wrapper": "Boolean",
+          "default": "false"
+        },
+        {
+          "datatype": "char",
+          "size": "2 bytes",
+          "range": "0 to 65535",
+          "wrapper": "Character",
+          "default": "0"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "icon": "Code",
+      "title": "Example Program",
+      "code": "class A {\n    public static void main(String[] args) {\n        byte a = 127;\n        short b = 1234;\n        int c = 1234567;\n        long d = 123456756756L;\n        float e = 12.12f;\n        double f = 12.34;\n        char g = 'a';\n        boolean h = true;\n    }\n}"
     }
   ],
+  "typecasting": [
+    {
+      "id": 1,
+      "icon": "Layers",
+      "title": "TYPE CASTING",
+      "points": [
+        "The process of converting one data type value into another data type is known as Typecasting.",
+        "It is mostly applied to primitive data types (except boolean).",
+        "This process is also called Primitive Data Type Casting.",
+        "There are 2 types of Typecasting in Java:",
+        "a. Implicit Type Casting",
+        "b. Explicit Type Casting"
+      ]
+    },
+    {
+      "id": 2,
+      "icon": "Layers",
+      "title": "IMPLICIT TYPE CASTING",
+      "points": [
+        "Also known as: Widening or Upcasting",
+        "When a smaller data type is converted into a bigger data type automatically by the compiler.",
+        "There is no loss of data.",
+        "Happens in this order:",
+        "byte → short → int → long → float → double"
+      ]
+    },
+    {
+      "id": 3,
+      "icon": "Layers",
+      "title": "Explicit Type Casting",
+      "points": [
+        "Also known as: Narrowing or Downcasting",
+        "When a bigger data type is converted into a smaller data type manually by the programmer.",
+        "There may be loss of data (especially fractional or overflow values).",
+        "This typecasting requires the use of type in brackets."
+      ]
+    },
+    {
+      "id": 4,
+      "icon": "Code",
+      "title": "Example Programs",
+      "code": "// Implicit Type Casting\nint a = 10;\ndouble b = a;  // Automatically converted\nSystem.out.println(a); // 10\nSystem.out.println(b); // 10.0\n\n// Common Question\nlong a1 = 12L;\nfloat d = a1;\nSystem.out.println(a1); // 12\nSystem.out.println(d);  // 12.0\n\n// Explicit Type Casting\ndouble d1 = 10.99;\nint a2 = (int) d1;  // Manually cast double to int\nSystem.out.println(a2); // 10 (decimal part lost)"
+    },
+    {
+      "id": 5,
+      "title": "Summary Table",
+      "table": [
+        {
+          "type": "Implicit Casting",
+          "called": "Widening / Upcasting",
+          "who": "Compiler",
+          "loss": "❌ No",
+          "example": "int → double"
+        },
+        {
+          "type": "Explicit Casting",
+          "called": "Narrowing / Downcasting",
+          "who": "Programmer",
+          "loss": "✅ Yes",
+          "example": "double → int"
+        }
+      ]
+    }
+  ],
+  "variables": [
+    {
+      "id": 1,
+      "icon": "Wrench",
+      "title": "What is a Variable?",
+      "description": "Variable is a name or reference to a memory allocation where we are going to store our data.Data can be values as well as objects.",
+      "points": [
+        "There are 2 parts of variable.",
+        "1. Declaration",
+        "2. Initialisation",
+        "Declaration is mandatory whereas initialization is optional.",
+        "If we are not initializing, JVM will provide default value according to the data type."
+      ]
+    },
+    {
+      "id": 2,
+      "icon": "ListChecks",
+      "title": "Types of Variables",
+      "description": "categorization of the variable has been done on the basis of where we are declaring the variable and how we are declaring the variable.",
+      "points": [
+        "1. Non-Static variable",
+        "2. Static variable",
+        "3. Local Variable"
+      ]
+    },
+    {
+      "id": 3,
+      "icon": "Repeat",
+      "title": "Non-Static Variable",
+      "description": "These are the variables whose values differs from object to object. Every object will have a separate copy of non-static variable.",
+      "points": [
+        "The non-static variables are declared inside the class but outside the method block or constructor.",
+        "There is only one way in which we can access a non-static variable and that is by the help of object reference.",
+        "The non-static variables are stored in Heap area.",
+        "The memory of the non-static variable will be allocated after the creation of the object and that to be inside of the object.",
+        "Two non-static variable names cannot be same."
+      ],
+      "code": "// Declaration Example\nclass A {\n   int x = 10;// Non-static variable\n\n   public static void main(String[] args) {\n\n   }\n}\n\n// Access Example\nclass Ball {\n   int x = 10;\n   char z = 'a';\n\n   public static void main(String[] args) {\n      Ball b = new Ball();\n      System.out.println(b.x);\n      System.out.println(b.z);\n   }\n}\n\n// Proof non-static variable can vary there value from object to object.\nclass Ball {\n   int x = 10;\n\n   public static void main(String[] args) {\n      Ball b = new Ball();\n      Ball b1 = new Ball();\n      System.out.println(b.x);\n      System.out.println(b1.x);\n      b.x = 90;\n      System.out.println(b.x);\n      System.out.println(b1.x);\n      b1.x=0;\n\t\tSystem.out.println(b.x);\n\t\tSystem.out.println(b1.x);\n\n   }\n}"
+    },
+    {
+      "id": 4,
+      "icon": "Link",
+      "title": "Static Variable",
+      "description": "These variables have the same value for all objects of the class. Only one copy of a static variable is created and shared among all objects. Static variables are also called Class Variables.",
+      "points": [
+        "Static variables are declared inside the class but with the static keyword, and outside of method blocks or constructors.",
+        "There are two ways to access a static variable:",
+        "1.\tUsing class name (Recommended)",
+        "2.\tUsing object reference",
+        "Static variables are stored in the Method Area (also called Class Area).",
+        "Memory for static variables is allocated only once when the class is loaded by the JVM."
+      ],
+      "code": "// Declaration\nclass Student {\n   static String college = \"TAT\";// static variable\n}\n\n// Use of a Static Variable\nclass Student {\n    static String college = \"TAT\";\n\n    public static void main(String[] args) {\n        System.out.println(Student.college);  // using class name\n        Student s = new Student();\n        System.out.println(s.college);        // using object\n    }\n}\n\n// Usage Example\nclass Student {\n    static String college = \"TAT\";\n    public static void main(String[] args) {\n        Student s1 = new Student();\n        Student s2 = new Student();\n        System.out.println(s1.college);  // TAT\n        System.out.println(s2.college);  // TAT\n        s1.college = \"MIT\";\n        System.out.println(s1.college);  // MIT\n        System.out.println(s2.college);  // MIT (shared value)\n    }\n}"
+    },
+    {
+      "id": 5,
+      "icon": "Copy",
+      "title": "Local Variable",
+      "description": "A local variable is declared inside a method, constructor, or block. It is created when the method is called and destroyed when the method finishes. Local variables are not accessible outside the method.",
+      "points": [
+        "Local variables must be initialized before use.",
+        "They are stored in the Stack area.",
+        "No default values are given by JVM to local variables."
+      ],
+      "code": " \n    //Declaration\n    class Demo {\n    public static void main(String[] args) {\n        int x = 5;  // ---> Local variable\n        System.out.println(x);\n    }\n}\n\n// Example Usage\npublic class Example {\n    public static void main(String[] args) {\n        int x;\n        // System.out.println(x); // ❌ Error: variable x might not have been initialized\n    }\n}"
+    },
+    {
+      "id": 6,
+      "title": "Summary Table",
+      "table": [
+        {
+          "type": "Non-static",
+          "declared": "Inside class, outside method",
+          "access": "Object reference",
+          "memory": "Heap",
+          "default": "Yes"
+        },
+        {
+          "type": "Static",
+          "declared": "Inside class, outside method (with static)",
+          "access": "Class name / Object",
+          "memory": "Method Area",
+          "default": "Yes"
+        },
+        {
+          "type": "Local",
+          "declared": "Inside method/block",
+          "access": "Only inside that method",
+          "memory": "Stack",
+          "default": "❌ No"
+        }
+      ]
+    }
+  ],
+  "operators": [
+    {
+      "id": 1,
+      "icon": "Calculator",
+      "title": "Operator Definition & Types",
+      "description": "Operators are the special symbols using which we can perform certain operations on operands.There are 3 types of operator present in java and these categorization has been done on the basis of how many operands we are using.",
+      "points": ["Unary Operator ", "Binary Operator", "Ternary Operator"]
+    },
+    {
+      "id": 2,
+      "icon": "RefreshCcw",
+      "title": "Unary Operators",
+      "description": "Whenever we are performing any operation using only one operand, it is known as Unary Operator.",
+      "points": [
+        "Increment Operator (++): It is a type of operator when used, will always increase the value of the variable by adding 1 to it. There are 2 types of increment operation.",
+        "1.Pre-Increment (++x) : In pre-increment, first the value will be increased then after it will get assigned.",
+        "2.Post-Increment (x++) : In post increment first the value will be assigned then after it will get incremented.",
+        "Decrement Operator (--) : It is a type of operator when used will always decrease the value of the variable by substracting 1 to it. There are 2 types of Decrement operation.",
+        "1.Pre-Decrement Operation(--x) : Whenever we are performing pre-decrement operation then it will first decrease the value then after it will assign.",
+        "2.Post-Decrement Operation(x--) : Whenever we are performing post-decrement operation then it will first assign the value thenafter it will get decremented.",
+        "Bitwise Complement (~) : In bitwise compliment it will first add 1 to the value then it will change the symbol of the final output.",
+        "Boolean Complement (!) : In Boolean compliment it will just change the Boolean value from true to false and false to true."
+      ],
+      "code": "// Pre-Increment\nclass AA\n{ \n\tpublic static void main(String [] args)\n\t{\n\t\tint x=10;\n\t\tint y=++x;\n\t\tSystem.out.println(x);\n\t\tSystem.out.println(yc);\n\t}\n}\n\n// Post-Increment\nclass AA\n{ \n\tpublic static void main(String [] args)\n\t{\n\t\tint x=10;\n\t\tint y=x++;\n\t\tSystem.out.println(x);\n\t\tSystem.out.println(y);\t\t\n\t}\n}\n\n\n// Pre-Decrement\nclass Demo\n{\n  public static void main(String [] args)\n  {\n     int x=2;\n     int y=--x;\n     System.out.println(x);//1\n     System.out.println(y);//1\n  }\n}\n\n// Post-Decrement\nclass Demo\n{\n  public static void main(String [] args)\n  {\n     int x=2;\n     int y=x--;\n     System.out.println(x);//1\n     System.out.println(y);//2\n  }\n}\n\n\n// Bitwise Complement\nclass AA\n{ \n\tpublic static void main(String [] args)\n\t{\n\t\tint x=~10;\n\t\tSystem.out.println(x);\n\t}\n}\n\n\n// Boolean Complement\nclass AA\n{ \n\tpublic static void main(String [] args)\n\t{\n\t\tboolean x=!true;\n\t\tSystem.out.println(x);//false\n\t}\n}"
+    },
+    {
+      "id": 3,
+      "icon": "Calculator",
+      "title": "Binary Operators",
+      "description": "Binary operators are the operators that will be used to perform operation with 2 operands.",
+      "points": [
+        "Arithmetic Operators : These are the operators that will perform arithmetic operations like addition, subtraction,  etc.  They are:-\t'+' :-add \t'-' :-subtract\t '*' :-multiply \t'/' :-divide '%' :-modulo",
+        "When we are using mod or divide operator both will perform division operation but the outputwill be different because mod will always take remainder as the output and divide will take quotient as the output.",
+        "String Concatenation : It is a process of merging two operand where both the operands can be string or any one of the the operand must be a string value.",
+        "-->In order to perform string concatenation we will be using add/plus (+) operator and it is also known as Overloaded operator because it can perform both addition and concatenation  simultaneously in the same line.",
+        "Assignment Operator : It is a type of operator which will assign value to the variable and variable to the object. For primitive it will be value to variable *(right to left) and for non-primitive it will be variable to object  *(left to right).",
+        "Relational Operators : These are the operators which will be used to check the relationship between 2 operands like '>' :-greater than '<' :-lesser than",
+        "Some compound relational operator are:-\t'>=' :-greater than equal to '<=' :-lesser than equal to",
+        "The output of the Relational operator will always be in the form of Boolean expression.",
+        "Equality Operators : It is a type of operator which will be checking whether both the operand are equal or not. If it is same then the output will be true otherwise false. Equality operator's output will also be in the boolean expression. It is applicable for both primitive as well as non primitive data type.",
+        "Not equal Operators : It is type of operator which will be checking whether the operand are not equal or same. If not equal then it will give true as the output other wise false. Not equality operator's output will also be in the boolean expression. It is applicable for both primitive as well as non primitive data type.",
+        "Bitwise Operators : There are 3 types of BITWISE operator. 1.Bitwise AND (&) 2.Bitwise OR (|)  3.Bitwise XOR (^)",
+        "1.Bitwise AND (&) : In bitwise AND operator it will give us true as the output if both the operands output is true otherwise false. ",
+        "2.Bitwise OR (|) : In bitwise OR operator it will give us true if any one of the operands output is true otherwise false.",
+        "3.Bitwise XOR (^) : In bitwise XOR operator it will give as true if both the operands output are different.",
+        "Logical Operators : In logical operator the execution of the 2nd operand is based on the output of the first operand. There are 2 types of Logical Operator:- 1.Logical AND (&&)  2.Logical OR (||)",
+        "1.Logical AND (&&) : In logical AND operator the 2nd operand will be executed if and only if(iff) the output of the first operand is true.",
+        "2.Logical OR (||) : In logic OR operator the 2nd operand will only be executed iff the output of the first operand is false."
+      ],
+      "code": "// Arithmetic Operators\nclass AA\n{ \n\tpublic static void main(String [] args)\n\t{\n\t\tint a=10;\n\t\tint b=2;\n\t\tSystem.out.println(a+b);  //12\n\t\tSystem.out.println(a-b);  //8\n\t\tSystem.out.println(a*b);  //20\n\t\tSystem.out.println(a/b);  //5\n\t\tSystem.out.println(a%b);  //0\n\t}\n}\n\n// String Concatenation\nString s1=\"Mutton\"+\"Keema\";\nSystem.out.println(s1); //MuttonKeema\n\nString s2=\"Chicken\"+65;\nSystem.out.println(s2); //Chicken65\n\nString s3=5+\"Star\";\nSystem.out.println(s3); //5Star\n\nString s=10+20+\"Hello\"+10+20;\nSystem.out.println(s); //-------->30Hello1020\n\n// Relational Operators\nboolean b1=10>2;\nSystem.out.println(b1); //true\n\nboolean b2=10<2;\nSystem.out.println(b2); //false\n\nboolean b3=10>=10;\nSystem.out.println(b3); //true\n\nboolean b4=10<=1;\nSystem.out.println(b4); //false\n\n// Equality Operators\nboolean x=(100==100);\nSystem.out.println(x); //true\n\nboolean y=(2==1);\nSystem.out.println(y);  //false\n\n// Not equal Operators\nboolean x=(100!=100);\nSystem.out.println(x); //false\n\nboolean y=(2!=1);\nSystem.out.println(y);  //true\n\n// Bitwise AND (&)\nboolean b=(10>2) & (12!=12);\n\t\tSystem.out.println(b);\t//false\n\t\t \n\t\tboolean b1=(10>2) & (12==12);\n\t\tSystem.out.println(b1); //true\n\n // Bitwise OR (|)\n    boolean b=(10>2) | (12!=12);\n\t\tSystem.out.println(b);\t//true\n\t\t \n\t\tboolean b1=false | false;\n\t\tSystem.out.println(b1); //false\n\n// Bitwise XOR (^)\n    boolean b=true ^ false;\n\t\tSystem.out.println(b);\t//true\n\t\t \n\t\tboolean b1=(2<=3) ^ (0==0);\n\t\tSystem.out.println(b1); //false\n   \n\n// Logical AND (&&)\n    boolean b=(10>2) && (12!=12);\n\t\tSystem.out.println(b);\t//false\n\t\t \n\t\tboolean b1=(10>2) && (12==12);\n\t\tSystem.out.println(b1); //true\n    \n// Logical OR (||)\n    boolean b=(10>2) || (12!=12);\n\t\tS ystem.out.println(b);\t//true\n\t\t \n\t\tboolean b1=(10<2) || (12!=12);\n\t\tSystem.out.println(b1); //false"
+    },
+    {
+      "id": 4,
+      "icon": "GitBranch",
+      "title": "Ternary Operator",
+      "description": "Whenever we are using 3 operands to perform any operation then it is known as Ternary Operator.",
+      "points": [
+        "Also known as Conditional Operator (?:)",
+        "Syntax: (condition)?Statement1:Statement2;",
+        "If the output of the condition is true then the statement 1 will be executed and when the output of the condition is false then statement 2 will be executed."
+      ],
+      "code": "int s=(1>0)?1000:2000;\nSystem.out.println(s); //1000\n\nString x=(false)?\"Subhadeep\":\"Jspiders\";\nSystem.out.println(x); //Jspiders"
+    }
+  ],
+  "flowControl": [
+    {
+      "id": 1,
+      "icon": "GitBranch",
+      "title": "🌊 Java Flow Control",
+      "description": "Flow control refers to the order in which individual instructions, statements, or function calls are executed or evaluated in a Java program. By default, Java programs execute from top to bottom, but we can change this flow using Flow Control Statements.",
+      "points": [
+        "✅ Categories of Flow Control Statements",
+        "1. Selection Statements (Decision-Making)",
+        "2. Iteration Statements (Loops)",
+        "3. Transfer Statements (Jump/Branching)"
+      ]
+    },
+    {
+      "id": 2,
+      "icon": "GitBranch",
+      "title": "1. Selection Statements (Decision Making)",
+      "description": "Used to choose between different paths of execution based on conditions.",
+      "points": [
+        "a. if-else Statement :-\n      _________________________ \n\n      Syntax:\nif (condition) {\n    // Executes if condition is true\n} else {\n    // Executes if condition is false\n}\n      Rules:\n      • Condition must be a boolean expression.\n      • Only one block is executed.\n\n      Special Case:,\n      • If else is missing, and the condition is false, nothing will be executed.\n\n      b. else-if Ladder :- \n      _____________________________\n      Used when we need to check multiple conditions.\n\n      Special Case:,\n      • Once a condition evaluates to true, the rest are skipped.,\n      • All conditions are checked in top-down order.,\n\n      c. switch Statement :- \n      ____________________________\n      Used to replace long else-if ladders for checking multiple fixed values.\n      Supported data types (Java 7+):\n      • byte, short, char, int, enum, String\n\n      Special/Exceptional Cases:\n      • break is optional; if omitted, execution falls through.\n      • default is optional but recommended.\n      • switch does not support ranges like case 1-3:."
+      ],
+      "code": "// if-else Syntax\nif (condition) {\n    // Executes if condition is true\n} else {\n    // Executes if condition is false\n}\n\n// if-else Example\nint age = 18;\nif (age >= 18) {\n    System.out.println(\"Eligible to vote\");\n} else {\n    System.out.println(\"Not eligible to vote\");\n}\n\n// else-if Ladder Syntax\nif (condition1) {\n    // block1\n} else if (condition2) {\n    // block2\n} else {\n    // blockN\n}\n\n// else-if Example\nint marks = 85;\n\nif (marks >= 90) {\n    System.out.println(\"Grade A\");\n} else if (marks >= 75) {\n    System.out.println(\"Grade B\");\n} else if (marks >= 60) {\n    System.out.println(\"Grade C\");\n} else {\n    System.out.println(\"Fail\");\n}\n\n\n// switch Syntax\nswitch(expression) {\n    case value1:\n        // code\n        break;\n    case value2:\n        // code\n        break;\n    ...\n    default:\n        // default code\n        break;\n}\n\n// switch Example\nint day = 2;\nswitch(day) {\n    case 1: System.out.println(\"Monday\"); break;\n    case 2: System.out.println(\"Tuesday\"); break;\n    default: System.out.println(\"Invalid Day\"); break;\n}"
+    },
+    {
+      "id": 3,
+      "icon": "Repeat",
+      "title": "2. Iteration Statements (Loops)",
+      "description": "Used to execute a block of code repeatedly.",
+      "points": [
+        "a. for Loop\"\n      ________________________________________\n      Special Cases:\n      • All three parts (init, condition, update) are optional.\n      • Multiple variables can be initialized.\n      \n      b. while Loop\n      ________________________________________\n      Special Case:\n      • If the condition is false initially, loop body won't execute at all.\n     \n      c. do-while Loop\n       ________________________________________\n      Special Case:\n      • Guarantees at least one execution of loop body."
+      ],
+      "code": "// for Loop Syntax\nfor (initialization; condition; update) {\n    // loop body\n}\n\n// for Example\nfor (int i = 1; i <= 5; i++) {\n    System.out.println(i);\n}\n\n// Infinite loop\nfor (;;) {\n    // Infinite loop\n}\n\n// Multiple variable initialization\nfor (int i = 0, j = 10; i < j; i++, j--) {\n    System.out.println(i + \" \" + j);\n}\n\n// while Syntax\nwhile (condition) {\n    // loop body\n}\n\n// while Example\nint i = 1;\nwhile (i <= 5) {\n    System.out.println(i);\n    i++;\n}\n\n// do-while Syntax\ndo {\n    // loop body\n} while (condition);\n\n// do-while Example\nint x = 1;\ndo {\n    System.out.println(x);\n    x++;\n} while (x <= 5);"
+    },
+    {
+      "id": 4,
+      "icon": "ArrowRightCircle",
+      "title": "3. Transfer Statements (Jump/Branching)",
+      "description": "Used to change the normal flow of control in loops/switch.",
+      "points": [
+        "a. break\n      ________________________________________\n      Used to exit from switch or loop (for, while, do-while).\n\n       Special Case : \n      • Breaks only from the nearest loop or switch.\n\n      b. continue\n      ________________________________________\n      Skips current iteration and jumps to next cycle.\n\n       Special Case :\n      • Does not terminate the loop.\n\n      c. return (Bonus)\n      ________________________________________\n       Used to exit from a method and return control to the caller."
+      ],
+      "code": "// break Example\nfor (int i = 1; i <= 10; i++) {\n    if (i == 5) break;\n    System.out.println(i);\n}\n\n// continue Example\nfor (int i = 1; i <= 5; i++) {\n    if (i == 3) continue;\n    System.out.println(i);\n}\n\n// return Example\npublic static int add(int a, int b) {\n    return a + b;\n}"
+    }
+  ],
+  "classes": [
+    {
+      "id": 1,
+      "icon": "BookOpen",
+      "title": "What is a Class?",
+      "description": "A class is a blueprint for creating objects. It defines properties (variables) and behaviours (methods) that its objects will have. Classes are fundamental to Java's Object-Oriented Programming paradigm.",
+      "points": []
+    },
+    {
+      "id": 2,
+      "icon": "Code",
+      "title": "Syntax of a Class",
+      "description": "",
+      "points": [],
+      "code": "class ClassName {\n   int value;\n\n   ClassName(int v){\n      value = v;\n   }\n\n   void display(){\n      System.out.println(\"Value: \" + value);\n   }\n\n   static class NestedClass{\n      void show(){\n         System.out.println(\"Inside static Nested Class\");\n      }\n   }\n\n   public static void main(String[] args){\n      ClassName obj = new ClassName(10);\n      obj.display();\n\n      ClassName.NestedClass ob = new ClassName.NestedClass();\n      ob.show();\n   }\n}"
+    },
+    {
+      "id": 3,
+      "icon": "Layers",
+      "title": "Types of Classes",
+      "description": "Java provides different types of classes.",
+      "points": [
+        "Concrete Class : A normal class that is fully implemented and can be instantiated.It contains constructors, fields, access modifiers, and can be extended by other classes.",
+        "Abstract Class :\tA class that cannot be instantiated and serves as a blueprint for subclasses.",
+        "It contains both abstract methods (methods without implementation) and concrete methods (methods with implementation).",
+        "It Must be extended by subclasses to implement abstract methods.",
+        "It provides a common structure for related classes.",
+        "Final Class :A class declared using the final keyword and it cannot be extended by any other class.",
+        "It ensures class behaviour remains unchanged and protected from modifications",
+        "It can contain final methods and final variables",
+        "The Final Class cannot be inherited, Final Methods cannot be overridden in subclasses, and Final Variables values cannot be changed after initialization."
+      ],
+      "code": "// Concrete Class\npublic class ConcreteClass{\n   void display(){\n      System.out.println(\"This is a concrete class\");\n   }\n\n   public static void main(String[] args){\n      ConcreteClass obj = new ConcreteClass();\n      obj.display();\n   }\n}\n\n// Abstract Class\nabstract class Animal{\n   abstract void makeSound();\n\n   void sleep(){\n      System.out.println(\"Sleeping...\");\n   }\n}\n\nclass Dog extends Animal{\n   void makeSound(){\n      System.out.println(\"Dog barks!\");\n   }\n}\n\nclass Main{\n   public static void main(String[] args){\n      Dog myDog = new Dog();\n      myDog.makeSound();\n      myDog.sleep();\n   }\n}\n\n// Final Class\nfinal class Constants {\n   final int MAX_SPEED = 120;\n   String brand = \"Audi\";\n\n   final void displaySpeed() {\n      System.out.println(\"Maximum Speed: \" + MAX_SPEED);\n   }\n\n   void displayBrand() {\n      System.out.println(\"Brand Name: \" + brand);\n   }\n}\n\nclass TestFinal {\n   public static void main(String[] args) {\n      Constants obj = new Constants();\n      obj.displaySpeed();\n      obj.displayBrand();\n   }\n}"
+    },
+    {
+      "id": 4,
+      "icon": "Box",
+      "title": "Inner Classes",
+      "description": "A class within another class is called a nested class. It helps in better organization and encapsulation.There are four types of nested classes:",
+      "points": [
+        "Static Inner Class : It is defined using the static keyword inside a class and access only static members of the outer class.It does not require an instance of the outer class to be created.",
+        "Non-Static Inner Class:A regular class inside another class.Requires an instance of the outer class to be created.",
+        "Local Inner Class : Defined inside a method.Accessible only within the method where it is defined.",
+        "Anonymous Inner Class : A class without a name.Used for implementing interfaces or extending classes inline."
+      ],
+      "code": "// Static Nested Class\nclass OuterClass {\n   static class NestedClass {\n      void display() {\n         System.out.println(\"Inside Static Nested Class\");\n      }\n   }\n\n   public static void main(String[] args) {\n      OuterClass.NestedClass obj = new OuterClass.NestedClass();\n      obj.display();\n   }\n}\n\n// Non-Static Inner Class\nclass OuterClass2 {\n   class InnerClass {\n      void display() {\n         System.out.println(\"Inside Inner Class\");\n      }\n   }\n\n   public static void main(String[] args) {\n      OuterClass2 outer = new OuterClass2();\n      OuterClass2.InnerClass inner = outer.new InnerClass();\n      inner.display();\n   }\n}\n\n// Local Inner Class\nclass OuterClass3 {\n   void outerMethod() {\n      class LocalClass {\n         void display() {\n            System.out.println(\"Inside Local Inner Class\");\n         }\n      }\n\n      LocalClass localObj = new LocalClass();\n      localObj.display();\n   }\n\n   public static void main(String[] args) {\n      OuterClass3 outer = new OuterClass3();\n      outer.outerMethod();\n   }\n}\n\n// Anonymous Inner Class\ninterface MyInterface {\n   void display();\n}\n\nclass OuterClass4 {\n   public static void main(String[] args) {\n      MyInterface obj = new MyInterface() {\n         public void display() {\n            System.out.println(\"Inside Anonymous Inner Class\");\n         }\n      };\n      obj.display();\n   }\n}"
+    }
+  ],
+  
+
   "$schema": "./node_modules/json-server/schema.json"
 }

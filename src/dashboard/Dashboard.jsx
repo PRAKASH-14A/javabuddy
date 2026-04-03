@@ -80,10 +80,10 @@ const sidebarData = [
 
 const SidebarItem = memo(({ title, links, icon: Icon, isOpen, onClick }) => {
   return (
-    <div className="group">
+    <div className="group ">
       <div
         onClick={onClick}
-        className="flex items-center justify-between px-4 py-3 font-medium cursor-pointer text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg border border-white/10 backdrop-blur-sm"
+        className="flex items-center justify-between px-4 py-3 font-medium cursor-pointer text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg border border-white/10 backdrop-blur-sm "
       >
         <div className="flex items-center space-x-3">
           {Icon && (
@@ -146,7 +146,7 @@ const Dashboard = () => {
   return (
     <div className="flex min-h-screen overflow-hidden bg-gray-50">
       
-      <aside className="w-80 h-screen overflow-y-auto bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-800 p-4 space-y-3 shadow-2xl relative">
+      <aside className="w-80 h-screen overflow-y-auto bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-800 p-4 space-y-3 shadow-2xl relative no-scrollbar">
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-purple-600/20 backdrop-blur-3xl"></div>
         <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white/5 to-transparent"></div>
 
@@ -179,7 +179,7 @@ const Dashboard = () => {
         </div>
       </aside>
 
-      <main id="scroll-container" className="flex-1 h-screen overflow-y-auto p-6 bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50">
+      <main id="scroll-container" className="flex-1 h-screen overflow-y-auto  no-scrollbar bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50">
         <div className="max-w-6xl mx-auto w-full">
           <Outlet />
         </div>

@@ -179,7 +179,7 @@ const Dashboard = () => {
         </div>
       </aside>
 
-      <main className="flex-1 h-screen overflow-y-auto p-6 bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50">
+      <main id="scroll-container" className="flex-1 h-screen overflow-y-auto p-6 bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50">
         <div className="max-w-6xl mx-auto w-full">
           <Outlet />
         </div>

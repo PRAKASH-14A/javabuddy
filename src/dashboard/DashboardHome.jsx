@@ -6,7 +6,7 @@ const DashboardHome = () => {
   return (
     <div className="h-screen flex flex-col overflow-hidden">
       <Navbar />
-      <div className="flex-1 overflow-hidden">
+      <div className="flex-1 ">
         <Outlet />
       </div>
     </div>

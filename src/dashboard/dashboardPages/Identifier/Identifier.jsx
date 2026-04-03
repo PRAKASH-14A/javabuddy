@@ -18,7 +18,7 @@ const Identifier = () => {
   }, []);
 
   return (
-    <div className="min-h-screen w-full py-16 px-4">
+    <div className="min-h-screen w-full py-8 px-4">
       
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold text-purple-700 dark:text-purple-300">

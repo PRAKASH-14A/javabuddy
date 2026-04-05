@@ -133,7 +133,6 @@ const About = () => {
 
   return (
     <div className="overflow-x-hidden min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#1a1a2e] to-[#16213e] text-white relative">
-      {/* Animated Background */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,173,181,0.1),transparent_50%)]"></div>
         <motion.div
@@ -157,7 +156,6 @@ const About = () => {
       </div>
 
       <div className="relative z-10 py-20 px-6 md:px-20">
-        {/* Header Section */}
         <motion.div 
           className="text-center mb-20"
           initial={{ opacity: 0, y: -50 }}
@@ -184,7 +182,6 @@ const About = () => {
           </motion.p>
         </motion.div>
 
-        {/* Enhanced Cards Section */}
         <div className="space-y-24">
           {cardData.map((card, idx) => {
             const isLeft = idx % 2 === 0;
@@ -201,7 +198,6 @@ const About = () => {
                 transition={{ duration: 0.8, delay: idx * 0.2 }}
                 viewport={{ once: true }}
               >
-                {/* Image Section with Enhanced Effects */}
                 <motion.div
                   className="relative group"
                   onHoverStart={() => setHoveredCard(idx)}
@@ -209,10 +205,8 @@ const About = () => {
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
-                  {/* Floating Particles */}
                   <FloatingParticles particles={card.particles} color={card.color} />
                   
-                  {/* Glowing Ring */}
                   <motion.div
                     className={`absolute inset-0 rounded-full bg-gradient-to-r ${card.color} p-1 opacity-0 group-hover:opacity-100`}
                     animate={hoveredCard === idx ? { rotate: 360 } : {}}
@@ -221,7 +215,6 @@ const About = () => {
                     <div className="w-full h-full rounded-full bg-[#1A1A2E]"></div>
                   </motion.div>
                   
-                  {/* Main Image */}
                   <motion.div
                     className="relative z-10 w-40 h-40 rounded-full bg-gradient-to-br from-[#1A1A2E] to-[#0F3460] p-4 shadow-2xl border border-[#00ADB5]/30"
                     whileHover={{ 
@@ -235,7 +228,6 @@ const About = () => {
                       className="w-full h-full object-contain filter brightness-110"
                     />
                     
-                    {/* Floating Icon */}
                     <motion.div
                       className={`absolute -top-2 -right-2 w-12 h-12 rounded-full bg-gradient-to-r ${card.color} flex items-center justify-center shadow-lg`}
                       animate={hoveredCard === idx ? { y: [-5, 5, -5] } : {}}
@@ -245,7 +237,6 @@ const About = () => {
                     </motion.div>
                   </motion.div>
                   
-                  {/* Pulse Effect */}
                   <motion.div
                     className={`absolute inset-0 rounded-full bg-gradient-to-r ${card.color} opacity-20`}
                     animate={hoveredCard === idx ? { scale: [1, 1.2, 1] } : {}}
@@ -253,18 +244,14 @@ const About = () => {
                   />
                 </motion.div>
 
-                {/* Content Section with Enhanced Styling */}
                 <motion.div
                   className="relative group max-w-xl"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
-                  {/* Background Gradient */}
                   <div className={`absolute inset-0 bg-gradient-to-r ${card.color} rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl`}></div>
                   
-                  {/* Main Content */}
                   <div className="relative bg-[#0F3460]/80 backdrop-blur-xl p-8 rounded-xl shadow-2xl border border-[#00ADB5]/20 group-hover:border-[#00ADB5]/50 transition-all duration-300">
-                    {/* Title with Icon */}
                     <div className="flex items-center gap-3 mb-4">
                       <div className={`w-8 h-8 rounded-lg bg-gradient-to-r ${card.color} flex items-center justify-center`}>
                         <IconComponent className="w-4 h-4 text-white" />
@@ -274,12 +261,10 @@ const About = () => {
                       </h3>
                     </div>
                     
-                    {/* Description */}
                     <p className="text-gray-300 leading-relaxed group-hover:text-white transition-colors duration-300">
                       {card.description}
                     </p>
                     
-                    {/* Decorative Elements */}
                     <div className="absolute top-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity duration-300">
                       <Target className="w-6 h-6 text-[#00ADB5]" />
                     </div>
@@ -290,7 +275,6 @@ const About = () => {
           })}
         </div>
 
-        {/* Enhanced Team Section */}
         <motion.div 
           className="mt-32"
           initial={{ opacity: 0 }}
@@ -326,12 +310,9 @@ const About = () => {
                 className="relative group"
                 viewport={{ once: true }}
               >
-                {/* Card Background */}
                 <div className={`absolute inset-0 bg-gradient-to-r ${member.color} rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl`}></div>
                 
-                {/* Main Card */}
                 <div className="relative bg-[#1A1A2E]/90 backdrop-blur-xl rounded-xl p-6 text-center shadow-2xl border border-[#00ADB5]/20 group-hover:border-[#00ADB5]/50 transition-all duration-300">
-                  {/* Profile Image */}
                   <motion.div
                     className="relative mx-auto w-24 h-24 mb-4"
                     whileHover={{ rotate: 360 }}
@@ -345,7 +326,6 @@ const About = () => {
                       alt={member.name}
                       className="relative z-10 w-full h-full rounded-full object-cover shadow-lg group-hover:shadow-xl transition-shadow duration-300"
                     />
-                    {/* Floating Zap Icon */}
                     <motion.div
                       className={`absolute -top-1 -right-1 w-8 h-8 rounded-full bg-gradient-to-r ${member.color} flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100`}
                       animate={{ rotate: 360 }}
@@ -355,7 +335,6 @@ const About = () => {
                     </motion.div>
                   </motion.div>
                   
-                  {/* Member Info */}
                   <h3 className="text-xl font-semibold mb-1 group-hover:text-[#00ADB5] transition-colors duration-300">
                     {member.name}
                   </h3>
@@ -364,7 +343,6 @@ const About = () => {
                     {member.skill}
                   </p>
                   
-                  {/* Decorative Corner */}
                   <div className="absolute top-2 right-2 opacity-20 group-hover:opacity-60 transition-opacity duration-300">
                     <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${member.color}`}></div>
                   </div>
@@ -374,7 +352,6 @@ const About = () => {
           </div>
         </motion.div>
 
-        {/* Enhanced Tech Stack Section */}
         <motion.div 
           className="mt-32 text-center"
           initial={{ opacity: 0 }}
@@ -389,7 +366,6 @@ const About = () => {
             Built With the Best
           </motion.h2>
           <div className="flex justify-center items-center gap-16 flex-wrap">
-            {/* React */}
             <motion.div
               whileHover={{ 
                 scale: 1.2, 
@@ -414,7 +390,6 @@ const About = () => {
               <p className="mt-3 font-medium text-white group-hover:text-cyan-400 transition-colors duration-300">React</p>
             </motion.div>
 
-            {/* Tailwind CSS */}
             <motion.div
               whileHover={{ 
                 scale: 1.2, 

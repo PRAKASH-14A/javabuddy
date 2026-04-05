@@ -780,7 +780,6 @@ const InterviewQuestion = () => {
           </h1>
         </div>
 
-        {/* Progress Bar */}
         <div className="bg-white rounded-lg shadow-sm p-4 mb-6">
           <div className="flex justify-between items-center mb-2">
             <span className="text-sm font-medium text-gray-700">
@@ -804,7 +803,6 @@ const InterviewQuestion = () => {
         </div>
       </div>
 
-      {/* Questions */}
       <div className="space-y-4">
         {questions.map((item) => {
           const isExpanded = expandedCard === item.id;

@@ -52,7 +52,6 @@ const Login = () => {
   return (
     <div className="min-h-screen flex flex-col lg:flex-row font-sans bg-gradient-to-tr from-blue-50 to-blue-100">
       
-      {/* Left Section */}
       <div className="lg:w-1/2 flex items-center justify-center py-20 px-10 bg-blue-600 text-white text-center">
         <div>
           <h2 className="text-5xl font-extrabold mb-4 animate-pulse">
@@ -70,7 +69,6 @@ const Login = () => {
         </div>
       </div>
 
-      {/* Right Section */}
       <div className="lg:w-1/2 flex items-center justify-center py-16 px-6">
         <motion.div
           initial={{ opacity: 0, y: 60 }}

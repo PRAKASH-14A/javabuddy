@@ -453,7 +453,6 @@ const ContentCard = ({ section }) => {
         {section.description}
       </p>
 
-      {/* Add image for Exception Hierarchy section */}
       {section.hasImage && (
         <ExceptionHierarchyImage
           imageUrl={section.imageUrl}

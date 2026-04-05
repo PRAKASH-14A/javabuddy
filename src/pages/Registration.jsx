@@ -46,7 +46,6 @@ const Registration = () => {
   return (
     <div className="min-h-screen flex flex-col lg:flex-row font-sans bg-gradient-to-tr from-blue-50 to-blue-100">
       
-      {/* Left Section */}
       <div className="lg:w-1/2 flex items-center justify-center bg-blue-700 text-white py-20 px-10 text-center">
         <div>
           <h2 className="text-5xl font-extrabold mb-4 animate-pulse">
@@ -64,7 +63,6 @@ const Registration = () => {
         </div>
       </div>
 
-      {/* Right Section */}
       <div className="lg:w-1/2 flex items-center justify-center py-16 px-6">
         <motion.div
           initial={{ opacity: 0, y: 60 }}
@@ -102,7 +100,6 @@ const Registration = () => {
               required
             />
 
-            {/* Password */}
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
@@ -121,7 +118,6 @@ const Registration = () => {
               </span>
             </div>
 
-            {/* Confirm Password */}
             <div className="relative">
               <input
                 type={showConfirmPassword ? "text" : "password"}

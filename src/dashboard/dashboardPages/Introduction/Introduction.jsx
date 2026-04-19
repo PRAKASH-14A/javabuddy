@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { Landmark, Wrench, ThumbsDown } from "lucide-react";
 import { FaJava } from "react-icons/fa6";
 import { TiInputChecked } from "react-icons/ti";
+import useContent from "@/hooks/useContent";
 
 const iconMap = {
   Java: <FaJava className="text-purple-600 dark:text-purple-300" size={24} />,
@@ -12,23 +13,7 @@ const iconMap = {
 };
 
 const Introduction = () => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get("http://localhost:3000/intro"); 
-        setData(res.data); 
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const { data, loading, error } = useContent("intro");
 
   if (loading) {
     return <p className="text-center mt-10 text-gray-500">Loading...</p>;

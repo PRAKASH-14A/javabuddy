@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { GitBranch, Layers, Link, Network, ShieldOff } from "lucide-react";
 import { TiInputChecked } from "react-icons/ti";
 import singleInheritanceImg from "../../../assets/inheritance/Picture1.png";
 import multiLevelInheritanceImg from "../../../assets/inheritance/Picture2.png";
 import hierarchicalInheritanceImg from "../../../assets/inheritance/Picture3.png";
 import hybridInheritanceImg from "../../../assets/inheritance/Picture4.png";
+import useContent from "@/hooks/useContent";
 
 // Icon map
 const iconMap = {
@@ -29,14 +30,7 @@ const imageMap = {
 };
 
 const Inheritance = () => {
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/inheritance")
-      .then((res) => setCards(res.data))
-      .catch((err) => console.log(err));
-  }, []);
+  const { data: cards, loading, error } = useContent("inheritance");
 
   return (
     <div className="min-h-screen w-full py-8 px-4">

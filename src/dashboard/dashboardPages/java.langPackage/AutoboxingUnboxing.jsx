@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { CheckCircle, RefreshCw } from "lucide-react";
 
 import img2 from "../../../assets/WrapperClass/img2.png";
+import useContent from "@/hooks/useContent";
 
 const ICONS = {
   check: <CheckCircle className="text-green-500 mt-1" size={20} />,
@@ -92,12 +93,7 @@ const ContentCard = ({ section }) => (
 );
 
 const AutoboxingUnboxing = () => {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    axios.get("http://localhost:3000/autoboxing")
-      .then(res => setData(res.data));
-  }, []);
+  const { data, loading, error } = useContent("autoboxing");
 
   if (!data)
     return <p className="text-center mt-10">Loading...</p>;

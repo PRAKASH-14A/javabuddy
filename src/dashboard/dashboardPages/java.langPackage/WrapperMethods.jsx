@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { CheckCircle, Wrench } from "lucide-react";
+import useContent from "@/hooks/useContent";
 
 const ICONS = {
   util: <Wrench className="text-purple-600 dark:text-purple-300" size={24} />,
@@ -78,23 +79,7 @@ const ContentCard = ({ section }) => (
 );
 
 const WrapperMethods = () => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/wrapperMethods")
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch(() => {
-        setError("Failed to load data.");
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
+  const { data, loading, error } = useContent("wrapperMethods");
 
   if (loading)
     return <p className="text-center mt-10 text-lg font-medium">Loading...</p>;

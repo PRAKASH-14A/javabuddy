@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import useContent from "@/hooks/useContent";
+
 
 const List = () => {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/listData")
-      .then((res) => setData(res.data))
-      .catch((err) => console.error(err));
-  }, []);
+  const { data, loading, error } = useContent("listData");
 
   if (!data) {
     return <p className="text-center mt-10">Loading...</p>;

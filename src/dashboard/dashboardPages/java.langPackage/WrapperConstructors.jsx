@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { ListChecks, Code, AlertTriangle, CheckCircle } from "lucide-react";
+import useContent from "@/hooks/useContent";
 
 const ICONS = {
   compare: <ListChecks className="text-purple-600 dark:text-purple-300" size={24} />,
@@ -71,17 +72,7 @@ const ContentCard = ({ icon, title, children, className = "" }) => (
 );
 
 const WrapperConstructors = () => {
-  const [data, setData] = useState(null);
-  const [table, setTable] = useState([]);
-
-  useEffect(() => {
-    axios.get("http://localhost:3000/wrapperData")
-      .then(res => {
-        setData(res.data.wrapperConstructors);
-        setTable(res.data.wrapperTypeTable);
-      })
-      .catch(err => console.error(err));
-  }, []);
+  const { data, loading, error } = useContent("wrapperData");
 
   if (!data) return <p className="text-center mt-10">Loading...</p>;
 

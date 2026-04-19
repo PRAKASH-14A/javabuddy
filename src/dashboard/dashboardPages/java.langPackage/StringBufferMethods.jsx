@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { Code, ClipboardList } from "lucide-react";
+import useContent from "@/hooks/useContent";
 
 const ICONS = {
   method: <Code className="text-purple-600 dark:text-purple-300" size={24} />,
@@ -33,18 +34,7 @@ const ContentCard = ({ icon, title, children }) => (
 );
 
 const StringBufferMethods = () => {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/stringBufferMethodsData")
-      .then((response) => setData(response.data))
-      .catch((err) => {
-        setError("Failed to load data");
-        console.error(err);
-      });
-  }, []);
+  const { data, loading, error } = useContent("stringBufferMethodsData");
 
   if (error) return <p className="text-center mt-10 text-red-600">{error}</p>;
   if (!data) return <p className="text-center mt-10">Loading...</p>;

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { Repeat, ListChecks, Settings, ThumbsUp, Code } from "lucide-react";
 import { TiInputChecked } from "react-icons/ti";
+import useContent from "@/hooks/useContent";
 
 const iconMap = {
   Repeat: <Repeat className="text-purple-600 dark:text-purple-300" size={24} />,
@@ -12,14 +13,7 @@ const iconMap = {
 };
 
 const Overloading = () => {
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/methodOverloading")
-      .then((res) => setCards(res.data))
-      .catch((err) => console.error(err));
-  }, []);
+  const { data: cards, loading, error } = useContent("methodOverloading");
 
   return (
     <div className="min-h-screen w-full py-8 px-4">

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Lock, Settings, Code, ShieldCheck } from "lucide-react";
 import { TiInputChecked } from "react-icons/ti";
-import axios from "axios";
+import useContent from "@/hooks/useContent";
+
 
 const iconMap = {
   ShieldCheck: <ShieldCheck className="text-purple-600 dark:text-purple-300" size={24} />,
@@ -11,14 +12,7 @@ const iconMap = {
 };
 
 const Singleton = () => {
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/singletonClasses")
-      .then(res => setCards(res.data.cards))
-      .catch(err => console.error(err));
-  }, []);
+  const { data: cards, loading, error } = useContent("singletonClasses");
 
   return (
     <div className="min-h-screen w-full py-18 px-4">

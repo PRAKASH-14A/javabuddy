@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { Code, ListChecks } from "lucide-react";
 import img from "../../../assets/String/method1.jpg";
+import useContent from "@/hooks/useContent";
 
 const ICONS = {
   method: <Code className="text-purple-600 dark:text-purple-300" size={24} />,
@@ -26,25 +27,7 @@ const ContentCard = ({ icon, title, children }) => (
 );
 
 const StringMethods = () => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/stringMethods");
-        setData(response.data);
-      } catch (err) {
-        console.error(err);
-        setError("Failed to load data.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const { data, loading, error } = useContent("stringMethods");
 
   if (loading) return <p className="text-center mt-10 text-lg font-medium">Loading...</p>;
   if (error) return <p className="text-center mt-10 text-lg font-medium text-red-600">{error}</p>;

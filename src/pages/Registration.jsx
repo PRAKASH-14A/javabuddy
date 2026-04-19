@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
-import axios from "axios";
 import { Eye, EyeOff } from "lucide-react";
+import api from "../utils/api";
 
 const Registration = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +15,7 @@ const Registration = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -31,15 +32,32 @@ const Registration = () => {
       return;
     }
 
+    if (formData.password.length < 6) {
+      toast.error("Password must be at least 6 characters");
+      return;
+    }
+
+    setIsLoading(true);
+
     try {
       const { confirmPassword, ...payload } = formData;
 
-      await axios.post("http://localhost:3000/users", payload);
+      const { data } = await api.post("/auth/register", payload);
 
-      toast.success("Signup successful!");
-      navigate("/login");
+      // Auto-login after registration — store token
+      localStorage.setItem("jwt_token", data.token);
+      localStorage.setItem("user_info", JSON.stringify(data.user));
+      window.dispatchEvent(new Event("authChanged"));
+
+      toast.success(data.message || "Registration successful!");
+      navigate("/dashboard");
     } catch (error) {
-      toast.error("Registration failed");
+      const msg =
+        error.response?.data?.message ||
+        "Registration failed. Please try again.";
+      toast.error(msg);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -88,6 +106,7 @@ const Registration = () => {
               placeholder="Username"
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
               required
+              disabled={isLoading}
             />
 
             <input
@@ -98,6 +117,7 @@ const Registration = () => {
               placeholder="Email"
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
               required
+              disabled={isLoading}
             />
 
             <div className="relative">
@@ -106,9 +126,10 @@ const Registration = () => {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                placeholder="Password"
+                placeholder="Password (min 6 characters)"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                 required
+                disabled={isLoading}
               />
               <span
                 onClick={() => setShowPassword((prev) => !prev)}
@@ -127,6 +148,7 @@ const Registration = () => {
                 placeholder="Confirm Password"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                 required
+                disabled={isLoading}
               />
               <span
                 onClick={() => setShowConfirmPassword((prev) => !prev)}
@@ -138,9 +160,20 @@ const Registration = () => {
 
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-blue-600 to-indigo-500 text-white py-3 rounded-full font-semibold hover:from-blue-700 hover:to-indigo-600 transition shadow-md"
+              disabled={isLoading}
+              className="w-full bg-gradient-to-r from-blue-600 to-indigo-500 text-white py-3 rounded-full font-semibold hover:from-blue-700 hover:to-indigo-600 transition shadow-md disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
-              REGISTER
+              {isLoading ? (
+                <>
+                  <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                  </svg>
+                  Registering...
+                </>
+              ) : (
+                "REGISTER"
+              )}
             </button>
           </form>
         </motion.div>

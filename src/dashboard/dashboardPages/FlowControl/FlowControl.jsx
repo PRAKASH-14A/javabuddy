@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { GitBranch, Repeat, ArrowRightCircle } from "lucide-react";
 import { TiInputChecked } from "react-icons/ti";
+import useContent from "@/hooks/useContent";
 
 const iconMap = {
   GitBranch: <GitBranch className="text-purple-600" size={24} />,
@@ -12,14 +13,7 @@ const iconMap = {
 };
 
 const FlowControl = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/flowControl")
-      .then((res) => setData(res.data))
-      .catch((err) => console.log(err));
-  }, []);
+  const { data, loading, error } = useContent("flowControl");
 
   return (
     <div className="min-h-screen w-full py-8 px-4">

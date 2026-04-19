@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { Coffee, CheckCircle } from "lucide-react";
+import useContent from "@/hooks/useContent";
 
 const ICONS = {
   java: <Coffee className="text-purple-600 dark:text-purple-300" size={24} />,
@@ -81,25 +82,7 @@ const ContentCard = ({ section }) => (
 );
 
 const StringBuffer = () => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get("http://localhost:3000/stringBuffer");
-        setData(res.data);
-      } catch (err) {
-        console.error(err);
-        setError("Failed to load data.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const { data, loading, error } = useContent("stringBuffer");
 
   if (loading) return <p className="text-center mt-10 text-lg font-medium">Loading...</p>;
   if (error) return <p className="text-center mt-10 text-lg font-medium text-red-600">{error}</p>;

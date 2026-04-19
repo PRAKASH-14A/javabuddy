@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import useContent from "@/hooks/useContent";
+
 
 const Encapsulation = () => {
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/encapsulation")
-      .then((res) => setCards(res.data.cards))
-      .catch((err) => console.error(err));
-  }, []);
+  const { data: cards, loading, error } = useContent("encapsulation");
 
   return (
     <div className="p-6">

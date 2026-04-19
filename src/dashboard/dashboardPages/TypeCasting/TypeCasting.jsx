@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { Code, Layers } from "lucide-react";
 import { TiInputChecked } from "react-icons/ti";
+import useContent from "@/hooks/useContent";
 
 const iconMap = {
   Layers: <Layers className="text-purple-600 dark:text-purple-300" size={24} />,
@@ -9,14 +10,7 @@ const iconMap = {
 };
 
 const TypeCasting = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/typecasting")
-      .then((res) => setData(res.data))
-      .catch((err) => console.log(err));
-  }, []);
+  const { data, loading, error } = useContent("typecasting");
 
   return (
     <div className="min-h-screen w-full py-8 px-4">

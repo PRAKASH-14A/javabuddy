@@ -1,9 +1,9 @@
-import axios from "axios";
 import { Eye, EyeOff } from "lucide-react";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
+import api from "../utils/api";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +12,7 @@ const Login = () => {
   });
 
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -21,31 +22,27 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
-      const { data } = await axios.get("http://localhost:3000/users");
+      const { data } = await api.post("/auth/login", {
+        email: formData.email,
+        password: formData.password,
+      });
 
-      const currentUser = data.find(
-        (user) => user.email === formData.email
-      );
-
-      if (!currentUser) {
-        toast.error("Invalid Email");
-        return;
-      }
-
-      if (currentUser.password !== formData.password) {
-        toast.error("Invalid Password");
-        return;
-      }
-
-      const token = `abcde.${currentUser.id}`;
-      localStorage.setItem("jwt_token", token);
+      // Store JWT token and user info
+      localStorage.setItem("jwt_token", data.token);
+      localStorage.setItem("user_info", JSON.stringify(data.user));
       window.dispatchEvent(new Event("authChanged"));
-      toast.success("Login successful!");
+
+      toast.success(data.message || "Login successful!");
       navigate("/dashboard");
     } catch (error) {
-      console.log(error.message);
+      const msg =
+        error.response?.data?.message || "Login failed. Please try again.";
+      toast.error(msg);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -94,6 +91,7 @@ const Login = () => {
               onChange={handleChange}
               className="w-full text-black px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
               required
+              disabled={isLoading}
             />
 
             <div className="relative">
@@ -105,6 +103,7 @@ const Login = () => {
                 onChange={handleChange}
                 className="w-full text-black px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                 required
+                disabled={isLoading}
               />
               <span
                 onClick={() => setShowPassword((prev) => !prev)}
@@ -116,9 +115,20 @@ const Login = () => {
 
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-blue-600 to-indigo-500 text-white py-3 rounded-full font-semibold hover:from-blue-700 hover:to-indigo-600 transition shadow-md"
+              disabled={isLoading}
+              className="w-full bg-gradient-to-r from-blue-600 to-indigo-500 text-white py-3 rounded-full font-semibold hover:from-blue-700 hover:to-indigo-600 transition shadow-md disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
-              LOGIN
+              {isLoading ? (
+                <>
+                  <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                  </svg>
+                  Logging in...
+                </>
+              ) : (
+                "LOGIN"
+              )}
             </button>
           </form>
         </motion.div>

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { RefreshCcw, ListChecks, GitBranch, Layers, Code } from "lucide-react";
 import { TiInputChecked } from "react-icons/ti";
+import useContent from "@/hooks/useContent";
 
 const iconMap = {
   RefreshCcw: <RefreshCcw className="text-purple-600 dark:text-purple-300" size={24} />,
@@ -12,14 +13,7 @@ const iconMap = {
 };
 
 const Overriding = () => {
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/methodOverriding")
-      .then((res) => setCards(res.data))
-      .catch((err) => console.error(err));
-  }, []);
+  const { data: cards, loading, error } = useContent("methodOverriding");
 
   return (
     <div className="min-h-screen w-full py-8 px-4">

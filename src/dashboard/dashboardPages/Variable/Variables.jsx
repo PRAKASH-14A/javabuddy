@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { Wrench, ListChecks, Copy, Repeat, Link } from "lucide-react";
 import { TiInputChecked } from "react-icons/ti";
+import useContent from "@/hooks/useContent";
 
 const iconMap = {
   Wrench: <Wrench className="text-purple-600" size={24} />,
@@ -12,14 +13,7 @@ const iconMap = {
 };
 
 const Variables = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/variables")
-      .then((res) => setData(res.data))
-      .catch((err) => console.log(err));
-  }, []);
+  const { data, loading, error } = useContent("variables");
 
   const tableData = data.find((item) => item.table);
 

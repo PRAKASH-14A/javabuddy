@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { Coffee, CheckCircle } from "lucide-react";
 import img from "../../../assets/Collection/img1.jpg";
+import useContent from "@/hooks/useContent";
 
 const ICONS = {
   java: <Coffee className="text-purple-600 dark:text-purple-300" size={24} />,
@@ -120,14 +121,7 @@ const ContentCard = ({ section }) => (
 );
 
 const CollectionFramework = () => {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/collectionFramework")
-      .then((res) => setData(res.data))
-      .catch((err) => console.error(err));
-  }, []);
+  const { data, loading, error } = useContent("collectionFramework");
 
   if (!data) {
     return <p className="text-center mt-10">Loading...</p>;

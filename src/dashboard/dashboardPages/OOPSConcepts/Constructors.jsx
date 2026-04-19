@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Wrench, ListChecks, Repeat, Link, ThumbsUp } from "lucide-react";
 import { TiInputChecked } from "react-icons/ti";
 import constructorImg from "../../../assets/constructors/Picture4.jpg";
-import axios from "axios";
+import useContent from "@/hooks/useContent";
+
 
 const iconMap = {
   Wrench: <Wrench className="text-purple-600 dark:text-purple-300" size={24} />,
@@ -13,17 +14,7 @@ const iconMap = {
 };
 
 const Constructors = () => {
-  const [cards, setCards] = useState([]);
-
-useEffect(() => {
-  axios
-    .get("http://localhost:3000/constructors")
-    .then((res) => {
-      // console.log(res.data);
-      setCards(res.data.cards);
-    })
-    .catch((err) => console.error(err));
-}, []);
+  const { data: cards, loading, error } = useContent("constructors");
 
   return (
     <div className="min-h-screen w-full py-8 px-4">

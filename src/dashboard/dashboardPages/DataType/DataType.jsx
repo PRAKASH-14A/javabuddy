@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { Database, Code, Layers } from "lucide-react";
 import { TiInputChecked } from "react-icons/ti";
 import dataTypesImage from "../../../assets/datatype/Picture1.png";
+import useContent from "@/hooks/useContent";
 
 const iconMap = {
   Database: (
@@ -13,14 +14,7 @@ const iconMap = {
 };
 
 const DataType = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/DataType")
-      .then((res) => setData(res.data))
-      .catch((err) => console.log(err));
-  }, []);
+  const { data, loading, error } = useContent("DataType");
 
   return (
     <div className="min-h-screen w-full py-8 px-4">
